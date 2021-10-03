@@ -12,7 +12,7 @@ const HeaderDiv = styled.div`
 const HeaderChild = styled.div`
     flex: ${props => props.flex ? props.flex : 1};
     display:flex;
-    align-items: center;
+    align-items: ${props => props.align ? props.align : 'center'};
     justify-content: ${props => props.justify ? props.justify : 'center'}
 `
 
@@ -46,9 +46,9 @@ const Header = ()=>{
                 <i className="fas fa-chevron-right"></i>
             </Icons>
         </HeaderChild>
-        <HeaderChild flex="3" justify="flex-start">
+        <HeaderChild flex="3" justify="flex-start" align="flex-end">
                 <H3>{day} {month} {year}</H3> &nbsp;
-                <H5>TODAY</H5>
+                <H5>Today</H5>
         </HeaderChild>
 
         <HeaderChild>
