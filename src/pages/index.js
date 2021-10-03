@@ -1,10 +1,14 @@
 import SideBar from "../components/sideBar"
+import Calendar from "../components/calendar"
+
+import { BodyDiv } from './style'
 
 
 const Home = ()=>{
-    return <div>
+    return <BodyDiv>
         <SideBar />
-    </div>
+        <Calendar />
+    </BodyDiv>
 }
 
 export default Home

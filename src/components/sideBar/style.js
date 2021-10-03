@@ -14,9 +14,15 @@ export const ListDiv = styled.div`
     padding:10px;
     border-radius:10px;
     display: flex;
-    margin-bottom:5px;
+    margin-bottom:10px;
     cursor:pointer;
     position:relative;
+    transition: all ease-in-out 300ms;
+
+    &:hover{
+        background:#fff;
+        color:#F97B5C;
+    }
     
     ${({active})=>active && css`
         color:#fff;
@@ -34,9 +40,9 @@ export const ListDiv = styled.div`
             right:10px;
         }
 
+        &:hover:before{
+            background:#F97B5C;
+        }
+
     ` }
-`
-
-export const IconDiv = styled.div`
-
 `
