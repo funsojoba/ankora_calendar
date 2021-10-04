@@ -2,7 +2,7 @@ import { Main, GridDiv, GridChild } from './style'
 import NameCard from "../nameCard"
 import Form from '../form'
 import Appointment from '../appointment'
-import Schedule from '../shedule'
+// import Schedule from '../shedule'
 import { useState } from 'react'
 import hours from './hours'
 
