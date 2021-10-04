@@ -2,10 +2,22 @@ import { Main, GridDiv, GridChild } from './style'
 import NameCard from "../nameCard"
 import Form from '../form'
 import Appointment from '../appointment'
+import Schedule from '../shedule'
 import { useState } from 'react'
+import hours from './hours'
 
 const Grid = () => {
+    const doctors = [
+        { id: 0, name: 'Marvin T.', img:'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80'},
+        { id: 1, name: 'Mayowa A.', img:'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80'},
+        { id: 2, name: 'Clement K', img:'https://www.atlassian.com/dam/jcr:ba03a215-2f45-40f5-8540-b2015223c918/Max-R_Headshot%20(1).jpg'},
+        { id: 3, name: 'Philip B.', img:'https://preview.keenthemes.com/metronic-v4/theme/assets/pages/media/profile/profile_user.jpg'},
+        { id: 4, name: 'Steven S.', img:'https://htmlstream.com/preview/unify-v2.6/assets/img-temp/400x450/img5.jpg'}
+    ]
+    const colors = ['#D3E5FF', '#D3FFD5', '#FFD3D9', '#E1D3FF', '#FFE8D3']
+
     const [openForm, setOpenForm] = useState(false)
+
 
     const closeForm = () => {
         setOpenForm(false)
@@ -32,103 +44,26 @@ const Grid = () => {
         />
 
         <Form display={openForm && 'block'} close={closeForm} />
-        <GridDiv>
-            <GridChild>
-                <NameCard
-                    background="#D3E5FF"
-                    name="Davi K."
-                    image="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"
+        <GridDiv count={doctors.length + 1}>
+            <GridChild height="70px" name="grid 5" onClick={(e)=>logGrid(e)}></GridChild>
+            
+            {doctors.map(item =>(
+            <GridChild height="70px">
+                <NameCard 
+                    name={item.name}
+                    image={item.img}
+                    background={colors[item.id]}
                 />
             </GridChild>
-            <GridChild>
-                <NameCard
-                    background="#FFD3D9"
-                    name="Clement Q."
-                    image="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"
-                />
-            </GridChild>
-            <GridChild>
-                <NameCard
-                    background="#E1D3FF"
-                    name="Octa Devor"
-                    image="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"
-                />
-            </GridChild>
-            <GridChild>
-                <NameCard
-                    background="#FFE8D3"
-                    name="Halia Satun"
-                    image="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"
-                />
-            </GridChild>
-            <GridChild name="grid 5" onClick={(e)=>logGrid(e)}>Item 5</GridChild>
-            <GridChild name="grid 6" onClick={(e)=>logGrid(e)}>Item 6</GridChild>
-            <GridChild name="grid 7" onClick={(e)=>logGrid(e)}>Item 7</GridChild>
-            <GridChild>Item 8</GridChild>
-            <GridChild>Item 9</GridChild>
-            <GridChild>Item 10</GridChild>
-            <GridChild>Item 11</GridChild>
-            <GridChild>Item 12</GridChild>
-            <GridChild>Item 13</GridChild>
-            <GridChild>Item 14</GridChild>
-            <GridChild>Item 15</GridChild>
-            <GridChild>Item 16</GridChild>
-            <GridChild>Item 17</GridChild>
-            <GridChild>Item 18</GridChild>
-            <GridChild>Item 19</GridChild>
-            <GridChild>Item 20</GridChild>
-            <GridChild>Item 21</GridChild>
-            <GridChild>Item 22</GridChild>
-            <GridChild>Item 23</GridChild>
-            <GridChild>Item 24</GridChild>
-            <GridChild>Item 25</GridChild>
-            <GridChild>Item 26</GridChild>
-            <GridChild>Item 27</GridChild>
-            <GridChild>Item 28</GridChild>
-            <GridChild>Item 29</GridChild>
-            <GridChild>Item 30</GridChild>
-            <GridChild>Item 31</GridChild>
-            <GridChild>Item 32</GridChild>
-            <GridChild>Item 33</GridChild>
-            <GridChild>Item 34</GridChild>
-            <GridChild>Item 35</GridChild>
-            <GridChild>Item 36</GridChild>
-            <GridChild>Item 37</GridChild>
-            <GridChild>Item 38</GridChild>
-            <GridChild>Item 39</GridChild>
-            <GridChild>Item 40</GridChild>
-            <GridChild>Item 41</GridChild>
-            <GridChild>Item 42</GridChild>
-            <GridChild>Item 43</GridChild>
-            <GridChild>Item 44</GridChild>
-            <GridChild>Item 45</GridChild>
-            <GridChild>Item 46</GridChild>
-            <GridChild>Item 47</GridChild>
-            <GridChild>Item 48</GridChild>
-            <GridChild>Item 49</GridChild>
-            <GridChild>Item 50</GridChild>
-            <GridChild>Item 51</GridChild>
-            <GridChild>Item 52</GridChild>
-            <GridChild>Item 53</GridChild>
-            <GridChild>Item 54</GridChild>
-            <GridChild>Item 55</GridChild>
-            <GridChild>Item 56</GridChild>
-            <GridChild>Item 57</GridChild>
-            <GridChild>Item 58</GridChild>
-            <GridChild>Item 59</GridChild>
-            <GridChild>Item 60</GridChild>
-            <GridChild>Item 61</GridChild>
-            <GridChild>Item 62</GridChild>
-            <GridChild>Item 63</GridChild>
-            <GridChild>Item 64</GridChild>
-            <GridChild>Item 65</GridChild>
-            <GridChild>Item 66</GridChild>
-            <GridChild>Item 67</GridChild>
-            <GridChild>Item 68</GridChild>
-            <GridChild>Item 69</GridChild>
-            <GridChild>Item 70</GridChild>
-            <GridChild>Item 71</GridChild>
-            <GridChild>Item 72</GridChild>
+            ))}
+
+            {/* HOURS */}
+            {hours.map(hour =>(
+                <GridChild key={hour.id} name={hour.id} onClick={(e) => logGrid(e)}>
+                    
+                </GridChild>
+            ))}
+            
         </GridDiv>
     </Main>
 }

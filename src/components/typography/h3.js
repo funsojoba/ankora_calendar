@@ -7,14 +7,15 @@ const H5Div = styled.h3`
     justify-content:flex-start;
     margin-bottom: ${props => props.mb ? props.mb : '5px'};
     display:inline-block;
-
+    font-weight: ${props => props.weight ? props.weight : 'normal'};
 `
 
-const H3 = ({ children, color, align, mb }) => {
+const H3 = ({ children, color, align, mb, weight }) => {
     return <H5Div
         align={align}
         color={color}
         mb={mb}
+        weight={weight}
     >{children}</H5Div>
 }
 

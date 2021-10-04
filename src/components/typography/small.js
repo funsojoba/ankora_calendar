@@ -6,12 +6,12 @@ const SmallDiv = styled.div`
     text-align: left;
     display:flex;
     justify-content:flex-start;
-    margin-bottom: 10px;
+    margin-bottom: ${props => props.mb ? props.mb : '10px'};
 
 `
 
-const Small = ({children})=>{
-    return <SmallDiv>{children}</SmallDiv>
+const Small = ({children, mb})=>{
+    return <SmallDiv mb={mb}>{children}</SmallDiv>
 }
 
 export default Small
