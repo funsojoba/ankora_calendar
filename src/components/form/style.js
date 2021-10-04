@@ -51,3 +51,4 @@ export const InputSelect = styled.select`
     padding:10px 15px;
     border-radius: 10px;
     `
+
