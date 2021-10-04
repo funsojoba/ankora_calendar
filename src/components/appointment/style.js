@@ -1,12 +1,15 @@
 import styled from "styled-components";
 
 export const Div = styled.div`
-    background: #fff;
+    background: #000;
     padding:30px;
     box-shadow:1px 2px 20px rgba(0,0,0,.05);
     width:400px;
     border-radius:20px;
-    display: ${props => props.display ? props.display : 'block'}
+    display: ${props => props.display ? props.display : 'none'};
+    position: fixed;
+    top:30px;
+    right: 100px;
 `
 
 export const FlexDiv = styled.div`

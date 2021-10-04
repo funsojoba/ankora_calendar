@@ -33,10 +33,10 @@ const Appointment = ({ display, close, title, patient, time, doctor, patientCard
         </FlexDiv>
 
         <FlexDiv>
-        <SmallDiv>
-            <Button background="#FFE0D9" color="#F97B5C">Check in <i className="fas fa-circle-notch"></i></Button>
-            <Button background="#f9f9f9" color="#666">Cancel <i className="fas fa-minus-circle"></i></Button>
-        </SmallDiv>
+            <SmallDiv>
+                <Button background="#FFE0D9" color="#F97B5C">Check in <i className="fas fa-circle-notch"></i></Button>
+                <Button background="#f9f9f9" color="#666">Cancel <i className="fas fa-minus-circle"></i></Button>
+            </SmallDiv>
             <IconDiv> <i className="fas fa-pencil-alt"></i> </IconDiv>
         </FlexDiv>
     </Div>

@@ -1,4 +1,14 @@
-import styled from 'styled-components'
+import styled, {keyframes} from 'styled-components'
+
+const slidIn = keyframes`
+     from {
+            transform: translateX(200px);
+        }
+
+        to {
+            transform: translateX(0);
+        }
+`
 
 export const FormDiv = styled.form`
     background: #fff;
@@ -6,7 +16,12 @@ export const FormDiv = styled.form`
     box-shadow:1px 2px 20px rgba(0,0,0,.05);
     width:450px;
     border-radius:20px;
-    display: ${props => props.display ? props.display : 'none'}
+    display: ${props => props.display ? props.display : 'none'};
+    position:fixed;
+    top:50px;
+    right:50px;
+    z-index:10;
+    animation: ${slidIn} 300ms;
 `
 
 export const FormControl = styled.div`

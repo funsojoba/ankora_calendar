@@ -7,13 +7,17 @@ import H5 from '../typography/h5'
 const HeaderDiv = styled.div`
     display:flex;
     border-bottom: solid 1px #f9f9f9;
+    padding:15px 0;
+    position:relative;
+    width:100%;
+    background:#fff;
 `
 
 const HeaderChild = styled.div`
     flex: ${props => props.flex ? props.flex : 1};
     display:flex;
     align-items: ${props => props.align ? props.align : 'center'};
-    justify-content: ${props => props.justify ? props.justify : 'center'}
+    justify-content: ${props => props.justify ? props.justify : 'center'};
 `
 
 const Icons = styled.div`
@@ -46,6 +50,7 @@ const Header = ()=>{
                 <i className="fas fa-chevron-right"></i>
             </Icons>
         </HeaderChild>
+
         <HeaderChild flex="3" justify="flex-start" align="flex-end">
                 <H3>{day} {month} {year}</H3> &nbsp;
                 <H5>Today</H5>

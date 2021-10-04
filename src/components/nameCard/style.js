@@ -6,13 +6,14 @@ export const Div = styled.div`
     background: ${props => props.background? props.background : '#666'};
     display:flex;
     position:relative;
-    padding:10px;
-    align-items:center
+    padding:5px;
+    align-items:flex-end;
+
 `
 
 export const NameIcon = styled.div`
     position:absolute;
-    right:15px;
+    right:5px;
     top:50%;
     transform: translateY(-50%);
     transition: all ease-in-out 300ms;
