@@ -1,10 +1,15 @@
-import { Main, GridDiv, GridChild } from './style'
+import { Main, FormDiv, FormControl, FlexDiv, Label, CloseBtn, InputSelect } from './style'
 import NameCard from "../nameCard"
-import Form from '../form'
+import Input from '../input'
+import Button from '../button'
+import H4 from '../typography/h4'
+
 import Appointment from '../appointment'
 // import Schedule from '../shedule'
 import { useState } from 'react'
 import hours from './hours'
+import { Table, Tr, Td } from '../table'
+import { time } from './timeOption'
 
 const Grid = () => {
     const doctors = [
@@ -17,22 +22,135 @@ const Grid = () => {
     const colors = ['#D3E5FF', '#D3FFD5', '#FFD3D9', '#E1D3FF', '#FFE8D3']
 
     const [openForm, setOpenForm] = useState(false)
-
+    const [doctorEvent, setDoctorEvent] = useState('')
+    const [hourEvent, setHourEvent] = useState('')
+    const [allSchedule, setAllSchedule] = useState([])
 
     const closeForm = () => {
         setOpenForm(false)
-        console.log(openForm)
     }
 
     const openFormDiv = () => {
         setOpenForm(true)
     }
     const logGrid = (e)=>{
-        console.log(e.target.getAttribute('name'))
+        setDoctorEvent(e.target.getAttribute('id'))
+        setHourEvent(e.target.getAttribute('name'))
         openFormDiv()
     }
 
+    // FORM HANDLING
+    const [inputs, setInputs] = useState({});
+
+    const handleChange = (event) => {
+        const name = event.target.name;
+        const value = event.target.value;
+        setInputs(values => ({ ...values, [name]: value, hour:hourEvent, doctor:doctorEvent }))
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        closeForm();
+        
+        console.log(allSchedule);
+    }
+
+
     return <Main>
+        <FormDiv onSubmit={handleSubmit} display={openForm && 'block'}>
+            <FlexDiv>
+                <H4 weight="bold">Add Appointment</H4>
+                <CloseBtn onClick={closeForm}>X</CloseBtn>
+            </FlexDiv>
+
+            <FormControl>
+                <Label>Type</Label>
+                <Input 
+                    onChange={handleChange}
+                    value={inputs.type}
+                    width="100%" 
+                    type="text" 
+                    placeholder="New Appointments"
+                    name="type" />
+            </FormControl>
+
+            <FormControl>
+                <Label>From</Label>
+                <FlexDiv>
+                    <Input
+                        width="100%" 
+                        type="date" 
+                        onChange={handleChange} 
+                        value={inputs.fromDate}
+                        name="fromDate"
+                        />
+                    &nbsp;
+                    <InputSelect 
+                        onChange={handleChange} 
+                        value={inputs.fromTime}
+                        name="fromTime">
+                        {time.map(item => {
+                            return <option value={item.value}>{item.value}</option>
+                        })}
+                    </InputSelect>
+                </FlexDiv>
+            </FormControl>
+
+            <FormControl>
+                <Label>To</Label>
+                <FlexDiv>
+                    <Input 
+                        width="100%" 
+                        type="date" 
+                        name="toDate" 
+                        onChange={handleChange} 
+                        value={inputs.toDate}/>
+                    &nbsp;
+                    <InputSelect name="toTime" onChange={handleChange} value={inputs.toTime}>
+                        {time.map(item => {
+                            return <option value={item.value}>{item.value}</option>
+                        })}
+                    </InputSelect>
+                </FlexDiv>
+            </FormControl>
+
+            <FormControl>
+                <Label>Attach Patient</Label>
+                <Input
+                     width="100%" 
+                    type="text" 
+                    placeholder="New Appointments" 
+                    onChange={handleChange} value={inputs.patient}
+                    name="patient"
+                    />
+            </FormControl>
+
+            <FormControl>
+                <Label>Attending Physician</Label>
+                <Input 
+                    width="100%" 
+                    type="text" 
+                    placeholder="New Appointments"
+                    onChange={handleChange} value={inputs.physician}
+                    name="pysician" />
+            </FormControl>
+
+            <FormControl>
+                <Label>Notes</Label>
+                <Input 
+                    width="100%" 
+                    type="text" 
+                    placeholder="New Appointments"
+                    onChange={handleChange} value={inputs.notes}
+                    name="notes" />
+            </FormControl>
+
+            <FormControl>
+                <Button type="submit" width="100%" background="#000">Save</Button>
+            </FormControl>
+
+        </FormDiv>
+
         <Appointment
             time="20 Aug, 2021 8:30am  - 20 Aug, 2020 9:30am "
             patient="Arnold Ronald"
@@ -43,28 +161,38 @@ const Grid = () => {
             doctorImage="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80"
         />
 
-        <Form display={openForm && 'block'} close={closeForm} />
-        <GridDiv count={doctors.length + 1}>
-            <GridChild height="70px" name="grid 5" onClick={(e)=>logGrid(e)}></GridChild>
-            
-            {doctors.map(item =>(
-            <GridChild height="70px">
-                <NameCard 
-                    name={item.name}
-                    image={item.img}
-                    background={colors[item.id]}
-                />
-            </GridChild>
-            ))}
+        {/* <Form display={openForm && 'block'} close={closeForm} /> */}
+        
 
-            {/* HOURS */}
+        <Table>
+            <Tr>
+                {doctors.map(item => (
+                    <>
+                    <Td>
+                        <NameCard
+                            name={item.name}
+                            image={item.img}
+                            background={colors[item.id]}
+                        />
+                    </Td></>
+                ))}
+            </Tr>
+
             {hours.map(hour =>(
-                <GridChild key={hour.id} name={hour.id} onClick={(e) => logGrid(e)}>
-                    
-                </GridChild>
+                <Tr>
+                    {doctors.map(item => (
+                            <Td 
+                                onClick={(e)=>logGrid(e)} 
+                                name={hour.time}
+                                key={item.id}
+                                id={item.name} >
+                                
+                            </Td>
+                    ))}
+                </Tr>
             ))}
-            
-        </GridDiv>
+        </Table>
+
     </Main>
 }
 

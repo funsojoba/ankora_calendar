@@ -3,7 +3,7 @@ import Button from "../button"
 import H4 from "../typography/h4"
 
 import {FormDiv, FormControl, FlexDiv, Label, CloseBtn, InputSelect} from './style'
-import { time } from "./timeOption";
+import { time } from "../grid/timeOption";
 
 const Form = ({display, close})=>{
 
