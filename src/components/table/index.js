@@ -14,7 +14,7 @@ export const Tr = ({children})=>{
 }
 
 export const Td = ({children, onClick, name, id})=>{
-    return <TdDiv id={id} name={name} onClick={onClick}>{children}</TdDiv>
+    return <TdDiv id={id} dataName={name} name={name} onClick={onClick}>{children}</TdDiv>
 }
 
 export const Thead = ({children})=>{

@@ -35,8 +35,11 @@ export const TdDiv = styled.td`
     height:${props => props.height ? props.height : '150px'};
     cursor:pointer;
     transition:all ease-in-out 200ms;
-    &::active{
-        background: #fafafa;}
+    position:relative;
+
+    &:hover::after {
+        content: ${"after"};
+    }
 
     &:hover{
         background:#fafafa;
